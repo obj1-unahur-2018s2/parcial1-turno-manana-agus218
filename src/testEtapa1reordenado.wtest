@@ -1,0 +1,38 @@
+import profesionales.*
+import empresas.*
+import universidades.*
+
+test "testX" {
+
+var empresa = new Empresa()
+    
+	var luciana = new ProfesionalLibre()
+	var juana = new ProfesionalVinculado()
+	var melina = new ProfesionalAsociado()
+	var rocio = new ProfesionalLibre()
+	
+	empresa.contratar(juana)
+	empresa.contratar(luciana)
+	empresa.contratar(melina)
+	empresa.contratar(rocio)
+	
+	
+	juana.universidad(uniRosario)
+	
+	melina.universidad(uniCorrientes)
+	
+	
+	rocio.universidad(uniHurlingham)
+	rocio.honorarios(5000)
+	rocio.provinciasDondePuedeTrabajar() { #{"Santa Fe", "Cordoba", "Buenos Aires"} }
+	
+	luciana.universidad(uniRosario)
+	luciana.honorarios(3200)
+	luciana.provinciasDondePuedeTrabajar() { #{"Santa Fe", "Entre Rios"} }
+	
+	
+	assert.equals(empresa.profCaros(rocio))
+	assert.equals(empresa.univFormadoras(#{uniRosario, uniCorrientes, uniHurlingham}))
+	assert.that(empresa.provCubiertas(#{"Santa Fe", "Cordoba"}))
+    assert.that(empresa.profBarato(juana))
+}

@@ -12,11 +12,13 @@ test "Juana" {
 	empresa.contratar(juana)
 	juana.universidad(uniRosario)
 	
+	assert.that(empresa.profBarato(juana))
 }
 
 test "Melina" {
 	
 	var empresa = new Empresa()
+	var honorariosRef = 3200
 
 	var melina = new ProfesionalAsociado()
 	
@@ -30,7 +32,7 @@ test "Melina" {
 test "Rocio" {
 	
 	var empresa = new Empresa()
-
+    var honorariosRef = 3200
 	
 	var rocio = new ProfesionalLibre()
 	
@@ -39,12 +41,14 @@ test "Rocio" {
 	rocio.honorarios(5000)
 	rocio.provinciasDondePuedeTrabajar() { #{"Santa Fe", "Cordoba", "Buenos Aires"} }
 
+    assert.that(empresa.profCaros(rocio))
 }
 
 test "Luciana" {
 	
 	var empresa = new Empresa()
-
+    var honorariosRef = 3200
+    
 	var luciana = new ProfesionalLibre()
 	
 	empresa.contratar(luciana)
@@ -53,4 +57,10 @@ test "Luciana" {
 	luciana.provinciasDondePuedeTrabajar() { #{"Santa Fe", "Entre Rios"} }
 	
 
+}
+test "testtttt" {
+	var empresa = new Empresa()
+	
+	assert.equals(empresa.univFormadoras(#{uniRosario, uniCorrientes, uniHurlingham}))
+	assert.that(empresa.provCubiertas(#{"Santa Fe", "Cordoba"}))
 }
