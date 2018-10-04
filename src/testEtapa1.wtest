@@ -1,0 +1,56 @@
+import profesionales.*
+import empresas.*
+import universidades.*
+
+test "Juana" {
+	
+	var empresa = new Empresa()
+	var honorariosRef = 3200
+
+	var juana = new ProfesionalVinculado()
+	
+	empresa.contratar(juana)
+	juana.universidad(uniRosario)
+	
+}
+
+test "Melina" {
+	
+	var empresa = new Empresa()
+
+	var melina = new ProfesionalAsociado()
+	
+	empresa.contratar(melina)
+	melina.universidad(uniCorrientes)
+	
+	
+
+}
+
+test "Rocio" {
+	
+	var empresa = new Empresa()
+
+	
+	var rocio = new ProfesionalLibre()
+	
+	empresa.contratar(rocio)
+	rocio.universidad(uniHurlingham)
+	rocio.honorarios(5000)
+	rocio.provinciasDondePuedeTrabajar() { #{"Santa Fe", "Cordoba", "Buenos Aires"} }
+
+}
+
+test "Luciana" {
+	
+	var empresa = new Empresa()
+
+	var luciana = new ProfesionalLibre()
+	
+	empresa.contratar(luciana)
+	luciana.universidad(uniRosario)
+	luciana.honorarios(3200)
+	luciana.provinciasDondePuedeTrabajar() { #{"Santa Fe", "Entre Rios"} }
+	
+
+}
